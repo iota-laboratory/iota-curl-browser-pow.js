@@ -1,0 +1,13 @@
+{
+    "targets": {
+        "release": {
+            "binaryFile": "build/release.wasm",
+            "textFile": "build/release.wat",
+            "runtime": "stub",
+            "optimizeLevel": 3,
+            "shrinkLevel": 0,
+            "converge": true,
+            "noAssert": true
+        }
+    }
+}

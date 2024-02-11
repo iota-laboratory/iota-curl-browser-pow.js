@@ -1,0 +1,13 @@
+{
+    "name": "iota-curl-browser-pow.js",
+    "version": "1.0",
+    "scripts": {
+        "build": "asc --config asconfig.json assembly/normal.ts -o dist/normal.wasm && asc --config asconfig.json --enable simd assembly/simd.ts -o dist/simd.wasm && asc --config asconfig.json --runtime incremental assembly/reference.ts -o dist/reference.wasm && terser iota-pow.js -o dist/iota-pow.min.js --compress --mangle"
+    },
+    "devDependencies": {
+        "assemblyscript": "^0.27.24",
+        "terser": "^5.27.0",
+        "typescript": "^5.3.3",
+        "wabt": "^1.0.32"
+    }
+}
