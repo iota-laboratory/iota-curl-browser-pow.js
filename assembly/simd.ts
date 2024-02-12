@@ -50,7 +50,7 @@ export function getNonceHi(): u32 {
 
 export function powWorker(targetZeros: u8, startIndexLo: u32, startIndexHi: u32, endIndexLo: u32, endIndexHi: u32): void {
     let nonce: u64 = ((<u64>startIndexHi) << 32) | (<u64>startIndexLo), updateBits: u8 = 64;
-    let endNonce: u64 = ((<u64>endIndexHi) << 32) | (<u64>endIndexLo);
+    let endNonce: u64 = ((<u64>endIndexHi) << 32) | (<u64>endIndexLo), endNonceOrig = endNonce;
     let inState: StaticArray<v128>, outState: StaticArray<v128>, index: i32;
     const truthTable: v128 = i8x16(1, 0, -1, 2, 1, -1, 0, 2, -1, 1, 0, 3, 3, 3, 3, 3);
     const v128_zero: v128 = i8x16.splat(0);
@@ -99,5 +99,5 @@ export function powWorker(targetZeros: u8, startIndexLo: u32, startIndexHi: u32,
         nonce += 16;
         updateBits = <u8>ctz<u64>(nonce) + 1;
     }
-    nonceResult = endNonce + 1;
+    nonceResult = endNonceOrig + 1;
 }

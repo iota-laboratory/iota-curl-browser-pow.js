@@ -105,7 +105,7 @@ var iotaPoW = (function () {
         // we are inside the worker
         onmessage = function (evt) {
             _wasmBuffer = evt.data.wasmBuffer;
-            powImpl(evt.data.hash, evt.data.zeros, evt.data.min, evt.data.max, evt.data.timeout).then(result => {
+            powImpl(evt.data.hash, evt.data.zeros, evt.data.min, evt.data.max).then(result => {
                 postMessage({ nonce: result });
             });
         };
